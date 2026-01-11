@@ -1,18 +1,21 @@
 #include <Arduino.h>
-
-// put function declarations here:
-int myFunction(int, int);
+#include "hardware-configs/pins.h"
 
 void setup() {
   // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(115200);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
+  Serial.print("{"); // Start marker
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  float joy_x = analogRead(JOY_X_PIN) / 512.0 - 1;
+  float joy_y = analogRead(JOY_Y_PIN) / 512.0 - 1;
+
+  Serial.print(joy_x);
+  Serial.print(",");
+  Serial.print(joy_y);
+  Serial.println("}"); // End marker
+
+  delay(100);
 }
