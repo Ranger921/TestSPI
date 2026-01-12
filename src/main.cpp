@@ -9,13 +9,13 @@ void setup() {
 void loop() {
   Serial.print("{"); // Start marker
 
-  float joy_x = analogRead(JOY_X_PIN) / 512.0 - 1;
-  float joy_y = analogRead(JOY_Y_PIN) / 512.0 - 1;
+  float joy_x = 1023 - analogRead(JOY_X_PIN);
+  float joy_y = analogRead(JOY_Y_PIN);
 
   Serial.print(joy_x);
   Serial.print(",");
   Serial.print(joy_y);
   Serial.println("}"); // End marker
 
-  delay(100);
+  delay(50);
 }
